@@ -1,0 +1,21 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'controllers/controllers.dart';
+import 'firebase/loading_status.dart';
+
+class DataUploaderScreen extends StatelessWidget {
+  DataUploaderScreen({super.key});
+  PapersDataUploader controller = Get.put(PapersDataUploader());
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Obx(() => Text(
+            controller.loadingStatus.value == LoadingStatus.completed
+                ? "uploading Completed"
+                : "up loading....")),
+      ),
+    );
+  }
+}
